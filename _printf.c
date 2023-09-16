@@ -1,54 +1,61 @@
-#include <stdarg.h> /* Include the standard argument library. */
-#include <stdio.h>  /* Include the standard input/output library. */
+#include <stdio.h>
+#include <stdarg.h>
 #include "main.h"
 
-int _printf(const char *format, ...) { /* Define the function _printf which takes a format string and a variable number of arguments. */
-    va_list args; /* Declare a va_list type variable. */
-    int count = 0; /* Initialize the count of printed characters. */
-    const char *traverse; /* Declare a pointer to traverse the format string. */
-    char *temp; /* Declare a pointer to traverse the string argument. */
+int _printf(const char *format, ...)
+{
+    va_list args;
+    int count = 0;
 
-    va_start(args, format); /* Initialize the va_list variable with the arguments after format. */
+    va_start(args, format);
 
-    for (traverse = format; *traverse != '\0'; traverse++) { /* Start a loop over the format string. */
-        while (*traverse != '%' && *traverse != '\0') { /* Print characters until '%' or end of string. */
-            putchar(*traverse); /* Print the character to stdout. */
-            traverse++; /* Move to the next character. */
-            count++; /* Increment the count of printed characters. */
+    while (*format)
+    {
+        if (*format != '%')
+        {
+            _putchar(*format);
+            count++;
+        }
+        else
+        {
+            format++;
+
+            switch (*format)
+            {
+                case 'c':
+                    {
+                        int ch = va_arg(args, int);
+                        _putchar(ch);
+                        count++;
+                        break;
+                    }
+                case 's':
+                    {
+                        char *str = va_arg(args, char*);
+                        while (*str)
+                        {
+                            _putchar(*str);
+                            str++;
+                            count++;
+                        }
+                        break;
+                    }
+                case '%':
+                    _putchar('%');
+                    count++;
+                    break;
+                default:
+                    _putchar('%');
+                    _putchar(*format);
+                    count += 2;
+                    break;
+            }
         }
 
-        if (*traverse == '\0') break; /* If end of string, exit the loop. */
-
-        traverse++; /* Skip '%' character. */
-
-        switch (*traverse) { /* Switch on the character after '%'. */
-            case 'c': { /* If it's 'c', a character argument is expected. */
-                char c = va_arg(args, int); /* Get the next argument as an int and convert to char. */
-                putchar(c); /* Print the character. */
-                count++; /* Increment the count of printed characters. */
-                break;
-            }
-            case 's': { /* If it's 's', a string argument is expected. */
-                char *s = va_arg(args, char*); /* Get the next argument as a string. */
-                for (temp = s; *temp != '\0'; temp++) { /* Loop over the string until end of string. */
-                    putchar(*temp); /* Print each character of the string. */
-                    count++; /* Increment the count of printed characters. */
-                }
-                break;
-            }
-            case '%': { /* If it's '%', print a '%' character. */
-                putchar('%');
-                count++; /* Increment the count of printed characters. */
-                break;
-            }
-        }
+        format++;
     }
 
-    va_end(args); /* Clean up the va_list variable. */
+    va_end(args);
 
-    return count; /* Return the number of characters printed. */
-}
-int main() {
-    _printf("Hello, %s!\n", "world");
-    return 0;
+    return count;
 }
