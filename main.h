@@ -7,7 +7,8 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-void printChar(int ch, int* count);
-void printString(char* str, int* count);
+int print_b(va_list args);
+
+
 
 #endif /* MAIN_H */
