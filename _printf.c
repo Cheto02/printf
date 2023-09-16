@@ -2,20 +2,11 @@
 #include <stdarg.h>
 #include "main.h"
 
-/**
- * printChar - Prints a single character and increments the count
- * @ch: The character to be printed
- * @count: Pointer to the count of characters printed
- */
 void printChar(int ch, int* count) {
     _putchar(ch);
     (*count)++;
 }
-/**
- * printString - Prints a null-terminated string and increments count char
- * @str: The string to be printed
- * @count: Pointer to the count of characters printed
- */
+
 void printString(char* str, int* count) {
     while (*str) {
         _putchar(*str);
@@ -23,13 +14,7 @@ void printString(char* str, int* count) {
         (*count)++;
     }
 }
-/**
- * _printf - Prints a formatted string
- * @format: The format string
- * ... : Additional arguments based on format specifiers
- *
- * Return: The number of characters printed
- */
+
 int _printf(const char *format, ...)
 {
     va_list args;
