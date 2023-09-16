@@ -4,10 +4,11 @@
 #include <stdarg.h>
 #include <string.h>
 #include <unistd.h>
+#define BUFF_SIZE 1024
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int _puts(char *str);
+
 
 int get_width(const char *format, int *i, va_list list);
 
