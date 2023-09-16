@@ -7,8 +7,7 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-int printString(const char *str);
-int handleFormatSpecifier(const char *format, va_list args) ;
-
+void printChar(int ch, int* count);
+void printString(char* str, int* count);
 
 #endif /* MAIN_H */
