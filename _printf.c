@@ -2,6 +2,23 @@
 #include <stdarg.h>
 #include "main.h"
 
+// Prints a single character
+static void printChar(char ch)
+{
+    _putchar(ch);
+}
+
+// Prints a null-terminated string
+static void printString(const char *str)
+{
+    while (*str)
+    {
+        _putchar(*str);
+        str++;
+    }
+}
+
+// Prints a formatted string
 int _printf(const char *format, ...)
 {
     va_list args;
@@ -13,7 +30,7 @@ int _printf(const char *format, ...)
     {
         if (*format != '%')
         {
-            _putchar(*format);
+            printChar(*format);
             count++;
         }
         else
@@ -23,30 +40,30 @@ int _printf(const char *format, ...)
             switch (*format)
             {
                 case 'c':
-                    {
-                        int ch = va_arg(args, int);
-                        _putchar(ch);
-                        count++;
-                        break;
-                    }
+                {
+                    int ch = va_arg(args, int);
+                    printChar(ch);
+                    count++;
+                    break;
+                }
                 case 's':
+                {
+                    char *str = va_arg(args, char*);
+                    printString(str);
+                    while (*str)
                     {
-                        char *str = va_arg(args, char*);
-                        while (*str)
-                        {
-                            _putchar(*str);
-                            str++;
-                            count++;
-                        }
-                        break;
+                        str++;
+                        count++;
                     }
+                    break;
+                }
                 case '%':
-                    _putchar('%');
+                    printChar('%');
                     count++;
                     break;
                 default:
-                    _putchar('%');
-                    _putchar(*format);
+                    printChar('%');
+                    printChar(*format);
                     count += 2;
                     break;
             }
@@ -59,3 +76,4 @@ int _printf(const char *format, ...)
 
     return count;
 }
+
