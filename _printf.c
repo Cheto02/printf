@@ -6,16 +6,14 @@
  */
 int _printf(const char *format, ...)
 {
-	if (formart != NULL)
+	if (format != NULL)
 	{
 		int count = 0, i;
 		int (*j)(va_list);
 		va_list args;
 
 		va_start(args, format);
-
 		i = 0;
-
 		if (format[0] == '%' && format[1] == '\0')
 			return (-1);
 		while (format != NULL && format[i] != '\0')
@@ -28,12 +26,14 @@ int _printf(const char *format, ...)
 					i += 2;
 				}
 				else
+				{
 					j = get_func(format[i + 1]);
 					if (j)
 						count += j(args);
 					else
-					count = _putchar(format[i]) + _putchar(format[i + 1]);
+						count = _putchar(format[i]) + _putchar(format[i + 1]);
 					i += 2;
+				}
 			}
 			else
 			{
