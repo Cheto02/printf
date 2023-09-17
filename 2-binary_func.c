@@ -1,6 +1,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
-
+#include "main.h"
 /**
  * print_b - Converts an unsigned int argument to binary
  * @args: The name for va_list
