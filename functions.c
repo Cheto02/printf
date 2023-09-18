@@ -85,7 +85,6 @@ int print_d(va_list args)
 		countnum /= 10;
 	}
 	return (count);
-}
 /**
  * print_i - prints integer
  * @args: integer argument
