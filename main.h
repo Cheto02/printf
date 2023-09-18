@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 /**
- * struct specifier - struct specifier
+ * struct spec - struct specifier
  * @valid: the valid character.
  * @f: the functions associated.
  *
