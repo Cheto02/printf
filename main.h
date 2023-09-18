@@ -7,14 +7,14 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
-
+#include <limits.h>
 /**
- * struct specifier - struct specifier
+ * struct spec - struct specifier
  * @valid: the valid character.
  * @f: the functions associated.
  *
  */
-typedef struct specifier
+typedef struct spec
 {
 	char *valid;
 	int (*f)(va_list);
@@ -27,7 +27,7 @@ int print_d(va_list args);
 int print_i(va_list args);
 int _putchar(char c);
 int print_percent(va_list args);
-int print_binary(va_list args);
 int (*get_func(char x))(va_list args);
+int print_binary(va_list args);
 
 #endif /* MAIN_H */
