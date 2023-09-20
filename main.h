@@ -29,6 +29,7 @@ int _putchar(char c);
 int print_percent(va_list args);
 int (*get_func(char x))(va_list args);
 int print_binary(va_list args);
+void intToBinary(unsigned int num, char *binary);
 
 
 #endif /* MAIN_H */
