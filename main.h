@@ -30,4 +30,5 @@ int print_percent(va_list args);
 int (*get_func(char x))(va_list args);
 int print_binary(va_list args);
 
+
 #endif /* MAIN_H */
