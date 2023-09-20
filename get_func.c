@@ -13,6 +13,7 @@ int (*get_func(char x))(va_list)
 		{"%", print_percent},
 		{"d", print_d},
 		{"i", print_i},
+		{"b", print_binary},
 		{NULL, NULL}
 	};
 	while (arr[i].valid)
