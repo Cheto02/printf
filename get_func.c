@@ -14,6 +14,10 @@ int (*get_func(char x))(va_list)
 		{"d", print_d},
 		{"i", print_i},
 		{"b", print_binary},
+		{"u", print_unsigned},
+		{"o", print_octal},
+		{"x", print_hex}, 
+		{"X", print_HEX},
 		{NULL, NULL}
 	};
 	while (arr[i].valid)
